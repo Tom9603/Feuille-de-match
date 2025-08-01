@@ -5,6 +5,9 @@ body {
   color: white;
   user-select: none;
   text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 h1 {
@@ -12,33 +15,35 @@ h1 {
   padding-bottom: 20px;
 }
 
-/* Terrain */
+/* Terrain Desktop */
 .field {
   position: relative;
   aspect-ratio: 3 / 4;
   background-image: url("images/field.jpg");
   background-size: cover;
   background-position: center;
-  position: relative;
   width: 90vw;
   max-width: 600px;
-  min-height: 100vh;
+  max-height: 90vh;
   margin: 30px auto;
   background-color: #145a32;
   border: 5px solid #BDC1B4;
   border-radius: 25px;
 }
 
-/* Style général des bulles */
+/* Bulles Desktop */
 .poste {
   position: absolute;
   width: 5vw;
   height: 5vw;
+  max-width: 60px;
+  max-height: 60px;
   background-color: #1e8449;
   border: 2px solid white;
   border-radius: 50%;
   text-align: center;
   font-weight: bold;
+  font-size: 1.2vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,26 +55,23 @@ h1 {
 .poste:hover {
   background-color: #ffffff;
   color: #27ae60;
-
 }
 
 /* Positionnement 4-3-3 offensif */
-
-/* Attaque */
 .ag  { top: 15%; left: 10%; }
-.bu  { top: 3%; left: 41.8%; }
-.ad  { top: 15%; left: 73.5%; }
-/* Milieu */
-.mcg { top: 45%; left: 20%; }
-.moc { top: 30%; left: 41.8%; }
+.bu  { top: 3%; left: 44.8%; }
+.ad  { top: 15%; left: 79.3%; }
+
+.mcg { top: 45%; left: 26%; }
+.moc { top: 30%; left: 44.8%; }
 .mcd { top: 45%; left: 63.5%; }
-/* Défense */
+
 .dg  { top: 65%; left: 10%; }
 .dc1 { top: 70%; left: 30%; }
-.dc2 { top: 70%; left: 53.7%; }
-.dd  { top: 65%; left: 73.5%; }
-/* Gardien */
-.gk  { top: 88%; left: 41.8%; }
+.dc2 { top: 70%; left: 59.3%; }
+.dd  { top: 65%; left: 79.3%; }
+
+.gk  { top: 88%; left: 44.8%; }
 
 /* MODAL */
 .modal {
@@ -126,119 +128,71 @@ h1 {
 /* 🌐 VERSION MOBILE */
 
 @media (max-width: 600px) {
-
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #0b6623;
-  color: white;
-  user-select: none;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-h1 {
-  margin-top: 30px;
-  padding-bottom: 20px;
-  font-size: 5vw;
-}
-
-/* Terrain */
-.field {
-  background-image: url("images/field.jpg");
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* empêche scroll */
+    height: 100vh;
+    width: 100vw;
+  }
+.container {
+  height: 100vh;
   width: 100vw;
-  max-width: none;
-  height: unset;
-  aspect-ratio: 3 / 4;
-  margin: 0 auto;
-  background-color: #145a32;
-  border: 5px solid #BDC1B4;
-  border-radius: 25px;
-}
-
-/* Style général des bulles */
-.poste {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #1e8449;
-  border: 2px solid white;
-  border-radius: 50%;
-  text-align: center;
-  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.6s;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
 }
 
-.poste:hover {
-  background-color: #ffffff;
-  color: #27ae60;
-}
+  .field {
+    width: 100vw;
+    height: auto;
+    max-height: 100vh;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+    background-image: url("images/field.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 5px solid #BDC1B4;
+    border-radius: 25px;
+    position: relative;
+  }
 
-/* Positionnement 4-3-3 offensif */
-.ag  { top: 15%; left: 5%; }
-.bu  { top: 3%; left: 43.5%; }
-.ad  { top: 15%; left: 81.7%; }
+  .poste {
+    position: absolute;
+    width: 8vw;   /* taille fluide */
+    height: 8vw;
+    font-size: 3.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e8449;
+    border: 2px solid white;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.6s;
+    cursor: pointer;
+  }
 
-.mcg { top: 45%; left: 25%; }
-.moc { top: 30%; left: 43.5%; }
-.mcd { top: 45%; left: 65%; }
+  .poste:hover {
+    background-color: #ffffff;
+    color: #27ae60;
+  }
 
-.dg  { top: 65%; left: 5%; }
-.dc1 { top: 70%; left: 30%; }
-.dc2 { top: 70%; left: 60%; }
-.dd  { top: 65%; left: 81.7%; }
+  /* Tes positions restent en % donc elles seront toujours bonnes */
+  .ag  { top: 15%; left: %; }
+  .bu  { top: 3%; left: 43.5%; }
+  .ad  { top: 15%; left: 81.7%; }
 
-.gk  { top: 88%; left: 43.5%; }
+  .mcg { top: 45%; left: 25%; }
+  .moc { top: 30%; left: 43.5%; }
+  .mcd { top: 45%; left: 65%; }
 
-/* MODAL */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
+  .dg  { top: 65%; left: 5%; }
+  .dc1 { top: 70%; left: 30%; }
+  .dc2 { top: 70%; left: 60%; }
+  .dd  { top: 65%; left: 81.7%; }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  color: black;
-  text-align: center;
-}
-
-.modal input {
-  padding: 10px;
-  margin-top: 10px;
-  width: 80%;
-  max-width: 300px;
-  border-radius: 30px;
-  font-size: 16px;
-}
-
-.modal button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 30px;
-  font-size: 16px;
-}
-
-.hidden {
-  display: none;
-}
+  .gk  { top: 88%; left: 43.5%; }
 }
