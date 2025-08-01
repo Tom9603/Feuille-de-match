@@ -32,11 +32,14 @@ document.querySelectorAll('.poste').forEach(p => {
   // ✅ Mise à jour en temps réel
   onValue(posteRef, snapshot => {
     const nom = snapshot.val();
-    if (nom) {
-      p.textContent = nom;
-    } else {
-      p.textContent = poste.toUpperCase(); // ou vide selon ton besoin
-    }
+    const posteCode = poste.toUpperCase();
+
+    // ✅ Mettre à jour uniquement les éléments internes
+    const posteCodeDiv = p.querySelector('.poste-code');
+    if (posteCodeDiv) posteCodeDiv.textContent = posteCode;
+
+    const playerNameDiv = p.querySelector('.player-name');
+    if (playerNameDiv) playerNameDiv.textContent = nom ? nom : '';
   });
 
   // ✅ Ouvrir le modal au clic
